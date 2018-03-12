@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>Circular easing</title>
+    <link rel="stylesheet" href="../css/style.css"/>           
+    <script src="../js/dv-1.0.0.js"></script>
+    <script src="../js/ease.js"></script>
+</head>
+<body>
+    <section>
+        <h1 class="title">Circular easing</h1>
+        <p>Circular easing은 원을 그리는 루트 함수를 이용하여 자연스러운 애니메이션을 만들기 위한 보간 값을 제공합니다.</p>
+        <div id="ex-01"></div>
+        <p>
+            <button class="btn_def" type="button" id="btn-ease-in">Easing in</button>
+            <button class="btn_def" type="button" id="btn-ease-out">Easing out</button>
+            <button class="btn_def" type="button" id="btn-ease-inout">Easing inout</button>
+        </p>
+        <script>
+            var svg = DV.svg().size(300, 300).into("ex-01");
+            DV.defs().append(
+                DV.marker().markerPoint(2, 2).markerSize(5, 5).markerOrient("auto").viewbox(0, 0, 5, 5).aspectRatio("none").id("mk-arrow").append(
+                    DV.path().d("M0,0 L4,2 L0,4 Z").fill("#c9c9c9")
+                )
+            ).into(svg);
+            DV.line().bound(50, 250, 50, 50).stroke("#c9c9c9", 1).mark("mk-arrow", "e").into(svg);
+            DV.line().bound(50,250, 250, 250).stroke("#c9c9c9", 1).mark("mk-arrow", "e").into(svg);
+            DV.text().txt("0").xys(35, 270).fill("#c9c9c9").into(svg);
+            DV.text().txt("1").xys(40, 65).fill("#c9c9c9").into(svg);
+            DV.text().txt("1").xys(245,265).fill("#c9c9c9").into(svg);
+
+            var ball = DV.circle().id("ball").center(50, 250).radius(7).fill("red").stroke("blue", 3).into(svg);
+
+            function animateEasing(funcEasing) {
+                var duration = 1000 * 1, old = null, t = 0, p = 0, x = 50, y = 250;
+                function loop(time) {
+                    if (!old) old = time;
+                    t = (time - old) / duration;
+                    if (t > 1) t = 1;
+                    p = funcEasing(t);
+                    x = 200 * p + 50;
+                    y = 250 - 200 * p;
+                    ball.center(x, y);
+                    if (t < 1) {
+                        requestAnimationFrame(loop);
+                    }
+                }
+                requestAnimationFrame(loop);
+            }
+
+            document.querySelector("#btn-ease-in").addEventListener("click", function () {
+                animateEasing(Ease.circIn);
+            }, false);
+
+            document.querySelector("#btn-ease-out").addEventListener("click", function () {
+                animateEasing(Ease.circOut);
+            }, false);
+
+            document.querySelector("#btn-ease-inout").addEventListener("click", function () {
+                animateEasing(Ease.circInOut);
+            }, false);
+
+        </script>
+        <p>스크립트는 다음과 같습니다.</p>
+        <pre>
+function animateEasing(funcEasing) {
+    var duration = 1000, old = null, t = 0, p = 0, x = 50, y = 250;
+    function loop(time) {
+        if (!old) old = time;
+        t = (time - old) / duration;
+        if (t &gt; 1) t = 1;
+        // value = scale * paced + initial
+        p = funcEasing(t);
+        x = 200 * p + 50;
+        y = 250 -200 * p;
+        // ball은 움직이는 공을 나타내는 객체입니다.
+        ball.center(x, y);
+        if (t &lt; 1) {
+            requestAnimationFrame(loop);
+        }
+    }
+    requestAnimationFrame(loop);
+}
+
+document.querySelector("#btn-ease-in").addEventListener("click", function () {
+    animateEasing(Ease.circIn);
+}, false);
+
+document.querySelector("#btn-ease-out").addEventListener("click", function () {
+    animateEasing(Ease.circOut);
+}, false);
+
+document.querySelector("#btn-ease-inout").addEventListener("click", function () {
+    animateEasing(Ease.circInOut);
+}, false);
+</pre>
+
+
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>

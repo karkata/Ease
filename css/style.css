@@ -1,0 +1,75 @@
+* { 
+    padding: 0; margin: 0;
+}
+
+html {
+    /* root font size */
+    font-size: 13px;
+}
+
+h1, h2, h3, h4, h5 {
+    /* The rem unit is related to the root font-size. */
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+}
+
+h1.title {
+    margin-top: 1rem;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+p {
+    font-size: 13px;
+    line-height: 1.5em;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    font-size: 13px;
+    line-height: 1.5em;
+    padding-left: .5rem;
+    padding-right: .5em;
+}
+
+section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    /* outside: default */
+    list-style-position: inside;
+}
+
+section ul {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+pre {
+    font-family: "Consolas";
+    font-size: 12px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+button.btn_def {
+    box-sizing: border-box;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    line-height: 2em;
+}
