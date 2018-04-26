@@ -7,7 +7,7 @@ Easing 함수는 이미 많은 구현법들이 인터넷에 공개되어 있고,
 
 Easing과 관련된 기능을 제공하는 라이브러리들은 이미 많은 수가 인터넷에 공개되어 있지만,  Ease 프로젝트는 개인적으로 easing 함수를 구현하는 방법에 대해 알고리즘 수준에서 접근을 하기 위해서 개인적 욕심에서 시작된 프로젝트이다. (잘 알려진 타 라이브러리에 비해 문제점이 많을지도 모르겠다.)
 > **Note:**
-> - Elastic easing, Back easing, Bounce easing은 jQuery의 알고리즘을 그대로 차용했다.
+> - Elastic easing, Back easing, Bounce easing은 수치 및 사용하는 함수에 따라 완곡함이 달라지기 때문에, 공개된 알고리즘 중에서 부분만 차용하였다.
 > - Exponential easing은 MS의 WPF에서 사용되는 알고리즘을 사용했다. 
 > - 그 외의 easing 함수들은 2차, 3차, 4차, 5차, sin, 루트(원) 그래프를 이용하여 직접 구현했다.
 > - 이 모듈은 css를 이용하지 않고 순수 자바스크립트만을 가지고 애니메이션을 구현할 때 사용한다.
@@ -34,6 +34,11 @@ ease.js 파일을 연결하는 것이 전부이다.
 
 ## 라이선스
 Apache 2.0
+
+## Credit
+- [Improved Easing Functions](https://joshondesign.com/2013/03/01/improvedEasingEquations)
+- [ExponentialEase Class (System.Windows.Media.Animation)](https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.media.animation.exponentialease?view=netframework-4.7.1)
+- [Commented by ChristianFigueroa](https://gist.github.com/gre/1650294)
 
 ## 기타
 karkata@gmail.com
